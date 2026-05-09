@@ -47,4 +47,24 @@ public class IndexFile {
 
         return node;
     }
+
+    public static long getRootId(RandomAccessFile raf) throws IOException {
+    raf.seek(8);
+    return raf.readLong();
+}
+
+public static void setRootId(RandomAccessFile raf, long rootId) throws IOException {
+    raf.seek(8);
+    raf.writeLong(rootId);
+}
+
+public static long getNextBlockId(RandomAccessFile raf) throws IOException {
+    raf.seek(16);
+    return raf.readLong();
+}
+
+public static void setNextBlockId(RandomAccessFile raf, long nextId) throws IOException {
+    raf.seek(16);
+    raf.writeLong(nextId);
+}
 }

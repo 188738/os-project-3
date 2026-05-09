@@ -22,7 +22,17 @@ public class Project3 {
                 }
                 createIndexFile(args[1]);
                 break;
+            case "insert":
+                if (args.length != 4) {
+                System.out.println("Error: usage: insert <file> <key> <value>");
+                return;
+    }
 
+    long key = Long.parseLong(args[2]);
+    long value = Long.parseLong(args[3]);
+
+    insert(args[1], key, value);
+    break;
             default:
                 System.out.println("Error: command not implemented yet");
         }
@@ -50,4 +60,35 @@ public class Project3 {
             System.out.println("Error creating file");
         }
     }
+
+    public static void insert(String fileName, long key, long value) {
+
+    try (RandomAccessFile raf = new RandomAccessFile(fileName, "rw")) {
+
+        long rootId = IndexFile.getRootId(raf);
+
+        // Tree is empty
+        if (rootId == 0) {
+
+            BTreeNode root = new BTreeNode();
+
+            root.blockId = 1;
+            root.parentId = 0;
+            root.numKeys = 1;
+
+            root.keys[0] = key;
+            root.values[0] = value;
+
+            IndexFile.writeNode(raf, root);
+
+            IndexFile.setRootId(raf, 1);
+            IndexFile.setNextBlockId(raf, 2);
+
+            System.out.println("Inserted into empty tree");
+        }
+
+    } catch (IOException e) {
+        System.out.println("Error inserting key");
+    }
+}
 }
