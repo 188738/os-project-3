@@ -1,0 +1,5 @@
+May 9th  12:35 : Created the initial Java Project 3 structure and implemented the command-line parser
+
+Successfully compiled and ran the program using:
+javac src/Project3.java
+java -cp src Project3 create test.idx
