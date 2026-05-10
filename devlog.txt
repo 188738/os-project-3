@@ -1,5 +1,18 @@
-May 9th  12:35 : Created the initial Java Project 3 structure and implemented the command-line parser
+May 9th  12:35 : Created the initial Java Project 3 structure and implemented the command line parser
 
 Successfully compiled and ran the program using:
 javac src/Project3.java
 java -cp src Project3 create test.idx
+
+
+May 9th 6:02 PM: implemneted the first version of insert
+
+The program can read the root id from the header and then detect an empty tree and then create the first root node
+
+
+May 9th 11:28 PM
+
+I implemented recursive seacrh, print, an extract
+
+verified that search works across child nodes and finished the rest of the project's requirements
+        
